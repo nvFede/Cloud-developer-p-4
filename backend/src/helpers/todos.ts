@@ -18,7 +18,7 @@ const todosAccess = new TodosAccess();
 const attachmentUtils = new AttachmentUtils();
 
 export async function getTodosForUser(userId: string): Promise<TodoItem[]> {
-  logger.info('Getting all todos');
+  logger.info('Getting all todos...');
 
   return todosAccess.getTodosForUser(userId)
 }
@@ -29,7 +29,7 @@ export async function createTodo(
 ): Promise<TodoItem> {
 
   try {
-    logger.info("Creating a new todo");
+    logger.info("Creating a new todo...");
 
     if (createTodoRequest.name.trim().length == 0) {
       throw new Error("Name cannot be an empty string");
@@ -58,7 +58,7 @@ export async function updateTodo(
 ): Promise<TodoUpdate> {
 
   try {
-    logger.info("Updating a todo");
+    logger.info("Updating a todo...");
 
 
     if (updateTodoRequest.name.trim().length == 0) {
@@ -73,7 +73,7 @@ export async function updateTodo(
 
 export async function deleteTodo(todoItemId: string, userId: string) {
   try {
-    logger.info("Deleting a todo");
+    logger.info("Deleting a todo...");
 
     return await todosAccess.deleteTodo(todoItemId, userId);
   } catch (error) {

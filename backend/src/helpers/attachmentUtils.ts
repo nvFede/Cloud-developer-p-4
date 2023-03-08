@@ -1,11 +1,14 @@
 import * as AWS from 'aws-sdk'
 import * as AWSXRay from 'aws-xray-sdk'
+import { createLogger } from '../utils/logger'
 
 const XAWS = AWSXRay.captureAWS(AWS)
 
 // TODO: Implement the fileStogare logic
 
 // fileStogare logic implementation - no logger
+const logger = createLogger('AttachmentUtils')
+
 
 export class AttachmentUtils {
   static bucketName = process.env.ATTACHMENT_S3_BUCKET
@@ -16,6 +19,9 @@ export class AttachmentUtils {
   ) {}
 
   async getUploadUrl(imageId: string) {
+
+    logger.info("Getting upload url...")
+
     return this.s3Client.getSignedUrl('putObject', {
       Bucket: AttachmentUtils.bucketName,
       Key: imageId,
