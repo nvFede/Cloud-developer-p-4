@@ -1,4 +1,4 @@
-org: evolvifylabs
+org: nvfede
 app: serverless-todo-app
 service: serverless-todo-app
 
@@ -24,7 +24,7 @@ provider:
   environment:
     TODOS_TABLE: Todos-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: serverless-c4-todo-evolvifylabs-images-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-c4-todo-nvfede-images-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
 
   logs:
@@ -59,7 +59,6 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
-    iamRoleStatementInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -81,7 +80,6 @@ functions:
           request:
             schemas:
               application/json: ${file(models/create-todo-model.json)}
-    iamRoleStatementInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -101,7 +99,6 @@ functions:
           request:
             schemas:
               application/json: ${file(models/update-todo-model.json)}
-    iamRoleStatementInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -118,7 +115,6 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-    iamRoleStatementInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -135,7 +131,6 @@ functions:
           path: todos/{todoId}/attachment
           cors: true
           authorizer: Auth
-    iamRoleStatementInherit: true
     iamRoleStatements:
       - Effect: Allow
         Action:

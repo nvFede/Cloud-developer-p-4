@@ -11,10 +11,14 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   output: {
+  // hashFunction: "xxhash64",
     libraryTarget: 'commonjs',
     path: path.join(__dirname, '.webpack'),
     filename: '[name].js',
   },
+  // experiments: {
+  //   futureDefaults: true,
+  // },
   target: 'node',
   module: {
     rules: [
