@@ -1,13 +1,15 @@
-import * as AWS from 'aws-sdk'
-import * as AWSXRay from 'aws-xray-sdk'
-import { createLogger } from '../utils/logger'
+import * as AWS  from 'aws-sdk'
+const AWSXRay = require('aws-xray-sdk')
+
+//import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 
 const XAWS = AWSXRay.captureAWS(AWS)
 
+import { createLogger } from '../utils/logger'
+const logger = createLogger('AttachmentUtils')
+
 // TODO: Implement the fileStogare logic
 
-// fileStogare logic implementation - no logger
-const logger = createLogger('AttachmentUtils')
 
 
 export class AttachmentUtils {
